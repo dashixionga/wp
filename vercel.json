@@ -8,5 +8,5 @@
     "routes": [
     { "src": "/(.*)", "dest": "/api/index.php" }
   ],
-    "outputDirectory": "wp-contents"
+    "outputDirectory": "wp-content"
 }
