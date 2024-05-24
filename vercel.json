@@ -1,17 +1,22 @@
 {
-  "builds": [
-    {
-      "src": "index.php",
-      "use": "@vercel/php",
-      "config": {
-        "phpVersion": "7.4" // 指定PHP版本
+    "version": 2,
+    "functions": {
+        "api/index.php": {
+            "runtime": "[email protected]"
+        }
+    },
+    "routes": [
+      { 
+        "src": "/(css|js|img)/(.*)$",
+        "dest": "/api/assets.php?type=$1&file=$2"
+      },
+      { 
+        "src": "/page.php?page=(.*)$",
+        "dest": "/api/index.php?page=$1" <--- this doesn't work
+      },
+      { 
+        "src": "/(.*)",  
+        "dest": "/api/index.php" 
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.php"
-    }
-  ]
+    ]
 }
