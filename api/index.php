@@ -1,6 +1,4 @@
 <?php
-phpinfo();
-exit();
 $file= __DIR__ . '/..'.$_SERVER["PHP_SELF"];
 
 if(file_exists($file))
