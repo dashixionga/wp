@@ -110,7 +110,7 @@ if ( ! function_exists( 'twenty_twenty_one_entry_meta_footer' ) ) {
 				}
 
 				$tags_list = get_the_tag_list( '', wp_get_list_item_separator() );
-				if ( $tags_list && ! is_wp_error( $tags_list ) ) {
+				if ( $tags_list ) {
 					printf(
 						/* translators: %s: List of tags. */
 						'<span class="tags-links">' . esc_html__( 'Tagged %s', 'twentytwentyone' ) . '</span>',
@@ -152,7 +152,7 @@ if ( ! function_exists( 'twenty_twenty_one_entry_meta_footer' ) ) {
 				}
 
 				$tags_list = get_the_tag_list( '', wp_get_list_item_separator() );
-				if ( $tags_list && ! is_wp_error( $tags_list ) ) {
+				if ( $tags_list ) {
 					printf(
 						/* translators: %s: List of tags. */
 						'<span class="tags-links">' . esc_html__( 'Tagged %s', 'twentytwentyone' ) . '</span>',
@@ -203,7 +203,7 @@ if ( ! function_exists( 'twenty_twenty_one_post_thumbnail' ) ) {
 				<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
 					<figcaption class="wp-caption-text"><?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></figcaption>
 				<?php endif; ?>
-			</figure><!-- .post-thumbnail -->
+			</figure>
 
 		<?php endif; ?>
 		<?php

@@ -7,35 +7,26 @@
 
 /**
  * Helper functions used to render the navigation block.
- *
- * @since 6.5.0
  */
 class WP_Navigation_Block_Renderer {
 
 	/**
 	 * Used to determine whether or not a navigation has submenus.
-	 *
-	 * @since 6.5.0
 	 */
 	private static $has_submenus = false;
 
 	/**
 	 * Used to determine which blocks need an <li> wrapper.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @var array
 	 */
 	private static $needs_list_item_wrapper = array(
 		'core/site-title',
 		'core/site-logo',
-		'core/social-links',
 	);
 
 	/**
 	 * Keeps track of all the navigation names that have been seen.
-	 *
-	 * @since 6.5.0
 	 *
 	 * @var array
 	 */
@@ -43,8 +34,6 @@ class WP_Navigation_Block_Renderer {
 
 	/**
 	 * Returns whether or not this is responsive navigation.
-	 *
-	 * @since 6.5.0
 	 *
 	 * @param array $attributes The block attributes.
 	 * @return bool Returns whether or not this is responsive navigation.
@@ -60,8 +49,6 @@ class WP_Navigation_Block_Renderer {
 
 	/**
 	 * Returns whether or not a navigation has a submenu.
-	 *
-	 * @since 6.5.0
 	 *
 	 * @param WP_Block_List $inner_blocks The list of inner blocks.
 	 * @return bool Returns whether or not a navigation has a submenu and also sets the member variable.
@@ -100,8 +87,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Determine whether the navigation blocks is interactive.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array         $attributes   The block attributes.
 	 * @param WP_Block_List $inner_blocks The list of inner blocks.
 	 * @return bool Returns whether or not to load the view script.
@@ -114,8 +99,6 @@ class WP_Navigation_Block_Renderer {
 
 	/**
 	 * Returns whether or not a block needs a list item wrapper.
-	 *
-	 * @since 6.5.0
 	 *
 	 * @param WP_Block $block The block.
 	 * @return bool Returns whether or not a block needs a list item wrapper.
@@ -143,8 +126,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Returns the markup for a single inner block.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param WP_Block $inner_block The inner block.
 	 * @return string Returns the markup for a single inner block.
 	 */
@@ -161,8 +142,6 @@ class WP_Navigation_Block_Renderer {
 
 	/**
 	 * Returns the html for the inner blocks of the navigation block.
-	 *
-	 * @since 6.5.0
 	 *
 	 * @param array         $attributes   The block attributes.
 	 * @param WP_Block_List $inner_blocks The list of inner blocks.
@@ -221,8 +200,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Gets the inner blocks for the navigation block from the navigation post.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array $attributes The block attributes.
 	 * @return WP_Block_List Returns the inner blocks for the navigation block.
 	 */
@@ -258,8 +235,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Gets the inner blocks for the navigation block from the fallback.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array $attributes The block attributes.
 	 * @return WP_Block_List Returns the inner blocks for the navigation block.
 	 */
@@ -276,8 +251,6 @@ class WP_Navigation_Block_Renderer {
 
 	/**
 	 * Gets the inner blocks for the navigation block.
-	 *
-	 * @since 6.5.0
 	 *
 	 * @param array    $attributes The block attributes.
 	 * @param WP_Block $block The parsed block.
@@ -337,8 +310,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Gets the name of the current navigation, if it has one.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array $attributes The block attributes.
 	 * @return string Returns the name of the navigation.
 	 */
@@ -374,8 +345,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Returns the layout class for the navigation block.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array $attributes The block attributes.
 	 * @return string Returns the layout class for the navigation block.
 	 */
@@ -407,8 +376,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Return classes for the navigation block.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array $attributes The block attributes.
 	 * @return string Returns the classes for the navigation block.
 	 */
@@ -436,8 +403,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Get styles for the navigation block.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array $attributes The block attributes.
 	 * @return string Returns the styles for the navigation block.
 	 */
@@ -450,8 +415,6 @@ class WP_Navigation_Block_Renderer {
 
 	/**
 	 * Get the responsive container markup
-	 *
-	 * @since 6.5.0
 	 *
 	 * @param array         $attributes The block attributes.
 	 * @param WP_Block_List $inner_blocks The list of inner blocks.
@@ -551,8 +514,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Get the wrapper attributes
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array         $attributes    The block attributes.
 	 * @param WP_Block_List $inner_blocks  A list of inner blocks.
 	 * @return string Returns the navigation block markup.
@@ -581,8 +542,6 @@ class WP_Navigation_Block_Renderer {
 
 	/**
 	 * Gets the nav element directives.
-	 *
-	 * @since 6.5.0
 	 *
 	 * @param bool $is_interactive Whether the block is interactive.
 	 * @return string the directives for the navigation element.
@@ -614,8 +573,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Handle view script module loading.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array         $attributes   The block attributes.
 	 * @param WP_Block      $block        The parsed block.
 	 * @param WP_Block_List $inner_blocks The list of inner blocks.
@@ -640,8 +597,6 @@ class WP_Navigation_Block_Renderer {
 	/**
 	 * Returns the markup for the navigation block.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array         $attributes The block attributes.
 	 * @param WP_Block_List $inner_blocks The list of inner blocks.
 	 * @return string Returns the navigation wrapper markup.
@@ -656,8 +611,6 @@ class WP_Navigation_Block_Renderer {
 
 	/**
 	 * Returns a unique name for the navigation.
-	 *
-	 * @since 6.5.0
 	 *
 	 * @param array $attributes The block attributes.
 	 * @return string Returns a unique name for the navigation.
@@ -677,8 +630,6 @@ class WP_Navigation_Block_Renderer {
 
 	/**
 	 * Renders the navigation block.
-	 *
-	 * @since 6.5.0
 	 *
 	 * @param array    $attributes The block attributes.
 	 * @param string   $content    The saved content.
@@ -725,8 +676,6 @@ if ( defined( 'IS_GUTENBERG_PLUGIN' ) && IS_GUTENBERG_PLUGIN ) {
 	/**
 	 * Returns the menu items for a WordPress menu location.
 	 *
-	 * @since 5.9.0
-	 *
 	 * @param string $location The menu location.
 	 * @return array Menu items for the location.
 	 */
@@ -763,8 +712,6 @@ if ( defined( 'IS_GUTENBERG_PLUGIN' ) && IS_GUTENBERG_PLUGIN ) {
 	 * Sorts a standard array of menu items into a nested structure keyed by the
 	 * id of the parent menu.
 	 *
-	 * @since 5.9.0
-	 *
 	 * @param array $menu_items Menu items to sort.
 	 * @return array An array keyed by the id of the parent menu where each element
 	 *               is an array of menu items that belong to that parent.
@@ -787,8 +734,6 @@ if ( defined( 'IS_GUTENBERG_PLUGIN' ) && IS_GUTENBERG_PLUGIN ) {
 	/**
 	 * Gets the inner blocks for the navigation block from the unstable location attribute.
 	 *
-	 * @since 6.5.0
-	 *
 	 * @param array $attributes The block attributes.
 	 * @return WP_Block_List Returns the inner blocks for the navigation block.
 	 */
@@ -807,8 +752,6 @@ if ( defined( 'IS_GUTENBERG_PLUGIN' ) && IS_GUTENBERG_PLUGIN ) {
 /**
  * Add Interactivity API directives to the navigation-submenu and page-list
  * blocks markup using the Tag Processor.
- *
- * @since 6.3.0
  *
  * @param WP_HTML_Tag_Processor $tags             Markup of the navigation block.
  * @param array                 $block_attributes Block attributes.
@@ -870,8 +813,6 @@ function block_core_navigation_add_directives_to_submenu( $tags, $block_attribut
 /**
  * Build an array with CSS classes and inline styles defining the colors
  * which will be applied to the navigation markup in the front-end.
- *
- * @since 5.9.0
  *
  * @param array $attributes Navigation block attributes.
  *
@@ -964,8 +905,6 @@ function block_core_navigation_build_css_colors( $attributes ) {
  * Build an array with CSS classes and inline styles defining the font sizes
  * which will be applied to the navigation markup in the front-end.
  *
- * @since 5.9.0
- *
  * @param array $attributes Navigation block attributes.
  *
  * @return array Font size CSS classes and inline styles.
@@ -994,8 +933,6 @@ function block_core_navigation_build_css_font_sizes( $attributes ) {
 /**
  * Returns the top-level submenu SVG chevron icon.
  *
- * @since 5.9.0
- *
  * @return string
  */
 function block_core_navigation_render_submenu_icon() {
@@ -1007,8 +944,6 @@ function block_core_navigation_render_submenu_icon() {
  * 'parse_blocks' includes a null block with '\n\n' as the content when
  * it encounters whitespace. This is not a bug but rather how the parser
  * is designed.
- *
- * @since 5.9.0
  *
  * @param array $parsed_blocks the parsed blocks to be normalized.
  * @return array the normalized parsed blocks.
@@ -1027,8 +962,6 @@ function block_core_navigation_filter_out_empty_blocks( $parsed_blocks ) {
 
 /**
  * Returns true if the navigation block contains a nested navigation block.
- *
- * @since 6.2.0
  *
  * @param WP_Block_List $inner_blocks Inner block instance to be normalized.
  * @return bool true if the navigation block contains a nested navigation block.
@@ -1052,8 +985,6 @@ function block_core_navigation_block_contains_core_navigation( $inner_blocks ) {
  *
  * This aims to mirror how the fallback mechanic for wp_nav_menu works.
  * See https://developer.wordpress.org/reference/functions/wp_nav_menu/#more-information.
- *
- * @since 5.9.0
  *
  * @return array the array of blocks to be used as a fallback.
  */
@@ -1110,8 +1041,6 @@ function block_core_navigation_get_fallback_blocks() {
 /**
  * Iterate through all inner blocks recursively and get navigation link block's post IDs.
  *
- * @since 6.0.0
- *
  * @param WP_Block_List $inner_blocks Block list class instance.
  *
  * @return array Array of post IDs.
@@ -1123,8 +1052,6 @@ function block_core_navigation_get_post_ids( $inner_blocks ) {
 
 /**
  * Get post IDs from a navigation link block instance.
- *
- * @since 6.0.0
  *
  * @param WP_Block $block Instance of a block.
  *
@@ -1149,8 +1076,6 @@ function block_core_navigation_from_block_get_post_ids( $block ) {
 /**
  * Renders the `core/navigation` block on server.
  *
- * @since 5.9.0
- *
  * @param array    $attributes The block attributes.
  * @param string   $content    The saved content.
  * @param WP_Block $block      The parsed block.
@@ -1163,8 +1088,6 @@ function render_block_core_navigation( $attributes, $content, $block ) {
 
 /**
  * Register the navigation block.
- *
- * @since 5.9.0
  *
  * @uses render_block_core_navigation()
  * @throws WP_Error An WP_Error exception parsing the block definition.
@@ -1182,8 +1105,6 @@ add_action( 'init', 'register_block_core_navigation' );
 
 /**
  * Filter that changes the parsed attribute values of navigation blocks contain typographic presets to contain the values directly.
- *
- * @since 5.9.0
  *
  * @param array $parsed_block The block being rendered.
  *
@@ -1218,8 +1139,6 @@ add_filter( 'render_block_data', 'block_core_navigation_typographic_presets_back
 
 /**
  * Turns menu item data into a nested array of parsed blocks
- *
- * @since 5.9.0
  *
  * @deprecated 6.3.0 Use WP_Navigation_Fallback::parse_blocks_from_menu_items() instead.
  *
@@ -1278,8 +1197,6 @@ function block_core_navigation_parse_blocks_from_menu_items( $menu_items, $menu_
 /**
  * Get the classic navigation menu to use as a fallback.
  *
- * @since 6.2.0
- *
  * @deprecated 6.3.0 Use WP_Navigation_Fallback::get_classic_menu_fallback() instead.
  *
  * @return object WP_Term The classic navigation.
@@ -1324,8 +1241,6 @@ function block_core_navigation_get_classic_menu_fallback() {
 /**
  * Converts a classic navigation to blocks.
  *
- * @since 6.2.0
- *
  * @deprecated 6.3.0 Use WP_Navigation_Fallback::get_classic_menu_fallback_blocks() instead.
  *
  * @param  object $classic_nav_menu WP_Term The classic navigation object to convert.
@@ -1367,8 +1282,6 @@ function block_core_navigation_get_classic_menu_fallback_blocks( $classic_nav_me
 
 /**
  * If there's a classic menu then use it as a fallback.
- *
- * @since 6.2.0
  *
  * @deprecated 6.3.0 Use WP_Navigation_Fallback::create_classic_menu_fallback() instead.
  *
@@ -1415,8 +1328,6 @@ function block_core_navigation_maybe_use_classic_menu_fallback() {
 /**
  * Finds the most recently published `wp_navigation` Post.
  *
- * @since 6.1.0
- *
  * @deprecated 6.3.0 Use WP_Navigation_Fallback::get_most_recently_published_navigation() instead.
  *
  * @return WP_Post|null the first non-empty Navigation or null.
@@ -1448,8 +1359,6 @@ function block_core_navigation_get_most_recently_published_navigation() {
 /**
  * Accepts the serialized markup of a block and its inner blocks, and returns serialized markup of the inner blocks.
  *
- * @since 6.5.0
- *
  * @param string $serialized_block The serialized markup of a block and its inner blocks.
  * @return string
  */
@@ -1462,8 +1371,6 @@ function block_core_navigation_remove_serialized_parent_block( $serialized_block
 /**
  * Mock a parsed block for the Navigation block given its inner blocks and the `wp_navigation` post object.
  * The `wp_navigation` post's `_wp_ignored_hooked_blocks` meta is queried to add the `metadata.ignoredHookedBlocks` attribute.
- *
- * @since 6.5.0
  *
  * @param array   $inner_blocks Parsed inner blocks of a Navigation block.
  * @param WP_Post $post         `wp_navigation` post object corresponding to the block.
@@ -1504,8 +1411,6 @@ function block_core_navigation_mock_parsed_block( $inner_blocks, $post ) {
  * children, the `wp_navigation` post's `_wp_ignored_hooked_blocks` meta is checked to see if any
  * of those hooked blocks should be exempted from insertion.
  *
- * @since 6.5.0
- *
  * @param array   $inner_blocks Parsed inner blocks of a Navigation block.
  * @param WP_Post $post         `wp_navigation` post object corresponding to the block.
  * @return string Serialized inner blocks in mock Navigation block wrapper, with hooked blocks inserted, if any.
@@ -1530,8 +1435,6 @@ function block_core_navigation_insert_hooked_blocks( $inner_blocks, $post ) {
  * Given a Navigation block's inner blocks and its corresponding `wp_navigation` post object,
  * this function inserts ignoredHookedBlocks meta into it, and returns the serialized inner blocks in a
  * mock Navigation block wrapper.
- *
- * @since 6.5.0
  *
  * @param array   $inner_blocks Parsed inner blocks of a Navigation block.
  * @param WP_Post $post         `wp_navigation` post object corresponding to the block.
@@ -1636,8 +1539,6 @@ if ( has_filter( 'rest_insert_wp_navigation', $rest_insert_wp_navigation_core_ca
 /**
  * Hooks into the REST API response for the core/navigation block and adds the first and last inner blocks.
  *
- * @since 6.5.0
- *
  * @param WP_REST_Response $response The response object.
  * @param WP_Post          $post     Post object.
  * @return WP_REST_Response The response object.
@@ -1652,9 +1553,7 @@ function block_core_navigation_insert_hooked_blocks_into_rest_response( $respons
 	// Remove mock Navigation block wrapper.
 	$content = block_core_navigation_remove_serialized_parent_block( $content );
 
-	$response->data['content']['raw'] = $content;
-
-	/** This filter is documented in wp-includes/post-template.php */
+	$response->data['content']['raw']      = $content;
 	$response->data['content']['rendered'] = apply_filters( 'the_content', $content );
 
 	return $response;

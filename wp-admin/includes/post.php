@@ -1084,7 +1084,7 @@ function get_post_meta_by_id( $mid ) {
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
- * @param int $post_id A post ID.
+ * @param int $postid A post ID.
  * @return array[] {
  *     Array of meta data arrays for the given post ID.
  *
@@ -1098,7 +1098,7 @@ function get_post_meta_by_id( $mid ) {
  *     }
  * }
  */
-function has_meta( $post_id ) {
+function has_meta( $postid ) {
 	global $wpdb;
 
 	return $wpdb->get_results(
@@ -1106,7 +1106,7 @@ function has_meta( $post_id ) {
 			"SELECT meta_key, meta_value, meta_id, post_id
 			FROM $wpdb->postmeta WHERE post_id = %d
 			ORDER BY meta_key,meta_id",
-			$post_id
+			$postid
 		),
 		ARRAY_A
 	);
@@ -1199,9 +1199,9 @@ function _fix_attachment_links( $post ) {
  * @return string[] An array of all the statuses for the supplied post type.
  */
 function get_available_post_statuses( $type = 'post' ) {
-	$statuses = wp_count_posts( $type );
+	$stati = wp_count_posts( $type );
 
-	return array_keys( get_object_vars( $statuses ) );
+	return array_keys( get_object_vars( $stati ) );
 }
 
 /**
@@ -1217,11 +1217,9 @@ function wp_edit_posts_query( $q = false ) {
 	if ( false === $q ) {
 		$q = $_GET;
 	}
-
-	$q['m']   = isset( $q['m'] ) ? (int) $q['m'] : 0;
-	$q['cat'] = isset( $q['cat'] ) ? (int) $q['cat'] : 0;
-
-	$post_statuses = get_post_stati();
+	$q['m']     = isset( $q['m'] ) ? (int) $q['m'] : 0;
+	$q['cat']   = isset( $q['cat'] ) ? (int) $q['cat'] : 0;
+	$post_stati = get_post_stati();
 
 	if ( isset( $q['post_type'] ) && in_array( $q['post_type'], get_post_types(), true ) ) {
 		$post_type = $q['post_type'];
@@ -1233,7 +1231,7 @@ function wp_edit_posts_query( $q = false ) {
 	$post_status      = '';
 	$perm             = '';
 
-	if ( isset( $q['post_status'] ) && in_array( $q['post_status'], $post_statuses, true ) ) {
+	if ( isset( $q['post_status'] ) && in_array( $q['post_status'], $post_stati, true ) ) {
 		$post_status = $q['post_status'];
 		$perm        = 'readable';
 	}
@@ -1463,7 +1461,7 @@ function get_sample_permalink( $post, $title = null, $name = null ) {
 	$original_filter = $post->filter;
 
 	// Hack: get_permalink() would return plain permalink for drafts, so we will fake that our post is published.
-	if ( in_array( $post->post_status, array( 'auto-draft', 'draft', 'pending', 'future' ), true ) ) {
+	if ( in_array( $post->post_status, array( 'draft', 'pending', 'future' ), true ) ) {
 		$post->post_status = 'publish';
 		$post->post_name   = sanitize_title( $post->post_name ? $post->post_name : $post->post_title, $post->ID );
 	}

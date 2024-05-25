@@ -345,11 +345,6 @@ const plugins = (0,external_React_namespaceObject.createElement)(external_wp_pri
  */
 
 
-
-/**
- * Defined behavior of a plugin type.
- */
-
 /**
  * Plugin definitions keyed by plugin name.
  */
@@ -367,8 +362,8 @@ const api_plugins = {};
  * // Using ES5 syntax
  * var el = React.createElement;
  * var Fragment = wp.element.Fragment;
- * var PluginSidebar = wp.editor.PluginSidebar;
- * var PluginSidebarMoreMenuItem = wp.editor.PluginSidebarMoreMenuItem;
+ * var PluginSidebar = wp.editPost.PluginSidebar;
+ * var PluginSidebarMoreMenuItem = wp.editPost.PluginSidebarMoreMenuItem;
  * var registerPlugin = wp.plugins.registerPlugin;
  * var moreIcon = React.createElement( 'svg' ); //... svg element.
  *
@@ -403,7 +398,7 @@ const api_plugins = {};
  * @example
  * ```js
  * // Using ESNext syntax
- * import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/editor';
+ * import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
  * import { registerPlugin } from '@wordpress/plugins';
  * import { more } from '@wordpress/icons';
  *
@@ -620,7 +615,7 @@ function PluginArea({
       }
     };
   }, [scope]);
-  const plugins = (0,external_wp_element_namespaceObject.useSyncExternalStore)(store.subscribe, store.getValue, store.getValue);
+  const plugins = (0,external_wp_element_namespaceObject.useSyncExternalStore)(store.subscribe, store.getValue);
   return (0,external_React_namespaceObject.createElement)("div", {
     style: {
       display: 'none'

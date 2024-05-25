@@ -434,12 +434,14 @@ function ReusableBlocksManageButton({
     const {
       getBlock,
       canRemoveBlock,
-      getBlockCount
+      getBlockCount,
+      getSettings
     } = select(external_wp_blockEditor_namespaceObject.store);
     const {
       canUser
     } = select(external_wp_coreData_namespaceObject.store);
     const reusableBlock = getBlock(clientId);
+    const isBlockTheme = getSettings().__unstableIsBlockBasedTheme;
     return {
       canRemove: canRemoveBlock(clientId),
       isVisible: !!reusableBlock && (0,external_wp_blocks_namespaceObject.isReusableBlock)(reusableBlock) && !!canUser('update', 'blocks', reusableBlock.attributes.ref),
@@ -447,7 +449,7 @@ function ReusableBlocksManageButton({
       // The site editor and templates both check whether the user
       // has edit_theme_options capabilities. We can leverage that here
       // and omit the manage patterns link if the user can't access it.
-      managePatternsUrl: canUser('create', 'templates') ? (0,external_wp_url_namespaceObject.addQueryArgs)('site-editor.php', {
+      managePatternsUrl: isBlockTheme && canUser('read', 'templates') ? (0,external_wp_url_namespaceObject.addQueryArgs)('site-editor.php', {
         path: '/patterns'
       }) : (0,external_wp_url_namespaceObject.addQueryArgs)('edit.php', {
         post_type: 'wp_block'

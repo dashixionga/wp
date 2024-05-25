@@ -36,14 +36,8 @@ var x = (y) => {
 var y = (x) => (() => (x))
 const interactivity_namespaceObject = x({ ["getConfig"]: () => (__WEBPACK_EXTERNAL_MODULE__wordpress_interactivity_8e89b257__.getConfig), ["privateApis"]: () => (__WEBPACK_EXTERNAL_MODULE__wordpress_interactivity_8e89b257__.privateApis), ["store"]: () => (__WEBPACK_EXTERNAL_MODULE__wordpress_interactivity_8e89b257__.store) });
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/interactivity-router/build-module/index.js
-var _getConfig$navigation;
 /**
  * WordPress dependencies
- */
-
-
-/**
- * Internal dependencies
  */
 
 const {
@@ -57,12 +51,8 @@ const {
   batch
 } = (0,interactivity_namespaceObject.privateApis)('I acknowledge that using private APIs means my theme or plugin will inevitably break in the next version of WordPress.');
 
-// Check if the navigation mode is full page or region based.
-const navigationMode = (_getConfig$navigation = (0,interactivity_namespaceObject.getConfig)('core/router').navigationMode) !== null && _getConfig$navigation !== void 0 ? _getConfig$navigation : 'regionBased';
-
-// The cache of visited and prefetched pages, stylesheets and scripts.
+// The cache of visited and prefetched pages.
 const pages = new Map();
-const headElements = new Map();
 
 // Helper to remove domain and hash from the URL. We are only interesting in
 // caching the path and the query.
@@ -78,9 +68,7 @@ const fetchPage = async (url, {
   try {
     if (!html) {
       const res = await window.fetch(url);
-      if (res.status !== 200) {
-        return false;
-      }
+      if (res.status !== 200) return false;
       html = await res.text();
     }
     const dom = new window.DOMParser().parseFromString(html, 'text/html');
@@ -92,24 +80,19 @@ const fetchPage = async (url, {
 
 // Return an object with VDOM trees of those HTML regions marked with a
 // `router-region` directive.
-const regionsToVdom = async (dom, {
+const regionsToVdom = (dom, {
   vdom
 } = {}) => {
   const regions = {};
-  let head;
-  if (false) {}
-  if (navigationMode === 'regionBased') {
-    const attrName = `data-${directivePrefix}-router-region`;
-    dom.querySelectorAll(`[${attrName}]`).forEach(region => {
-      const id = region.getAttribute(attrName);
-      regions[id] = vdom?.has(region) ? vdom.get(region) : toVdom(region);
-    });
-  }
+  const attrName = `data-${directivePrefix}-router-region`;
+  dom.querySelectorAll(`[${attrName}]`).forEach(region => {
+    const id = region.getAttribute(attrName);
+    regions[id] = vdom?.has(region) ? vdom.get(region) : toVdom(region);
+  });
   const title = dom.querySelector('title')?.innerText;
   const initialData = parseInitialData(dom);
   return {
     regions,
-    head,
     title,
     initialData
   };
@@ -118,16 +101,13 @@ const regionsToVdom = async (dom, {
 // Render all interactive regions contained in the given page.
 const renderRegions = page => {
   batch(() => {
-    if (false) {}
-    if (navigationMode === 'regionBased') {
-      populateInitialData(page.initialData);
-      const attrName = `data-${directivePrefix}-router-region`;
-      document.querySelectorAll(`[${attrName}]`).forEach(region => {
-        const id = region.getAttribute(attrName);
-        const fragment = getRegionRootFragment(region);
-        render(page.regions[id], fragment);
-      });
-    }
+    populateInitialData(page.initialData);
+    const attrName = `data-${directivePrefix}-router-region`;
+    document.querySelectorAll(`[${attrName}]`).forEach(region => {
+      const id = region.getAttribute(attrName);
+      const fragment = getRegionRootFragment(region);
+      render(page.regions[id], fragment);
+    });
     if (page.title) {
       document.title = page.title;
     }
@@ -163,26 +143,10 @@ window.addEventListener('popstate', async () => {
   }
 });
 
-// Initialize the router and cache the initial page using the initial vDOM.
-// Once this code is tested and more mature, the head should be updated for region based navigation as well.
-if (false) {}
+// Cache the initial page using the intially parsed vDOM.
 pages.set(getPagePath(window.location), Promise.resolve(regionsToVdom(document, {
   vdom: initialVdom
 })));
-
-// Check if the link is valid for client-side navigation.
-const isValidLink = ref => ref && ref instanceof window.HTMLAnchorElement && ref.href && (!ref.target || ref.target === '_self') && ref.origin === window.location.origin && !ref.pathname.startsWith('/wp-admin') && !ref.pathname.startsWith('/wp-login.php') && !ref.getAttribute('href').startsWith('#') && !new URL(ref.href).searchParams.has('_wpnonce');
-
-// Check if the event is valid for client-side navigation.
-const isValidEvent = event => event && event.button === 0 &&
-// Left clicks only.
-!event.metaKey &&
-// Open in new tab (Mac).
-!event.ctrlKey &&
-// Open in new tab (Windows).
-!event.altKey &&
-// Download.
-!event.shiftKey && !event.defaultPrevented;
 
 // Variable to store the current navigation.
 let navigatingTo = '';
@@ -242,9 +206,7 @@ const {
 
       // Don't update the navigation status immediately, wait 400 ms.
       const loadingTimeout = setTimeout(() => {
-        if (navigatingTo !== href) {
-          return;
-        }
+        if (navigatingTo !== href) return;
         if (loadingAnimation) {
           navigation.hasStarted = true;
           navigation.hasFinished = false;
@@ -261,11 +223,9 @@ const {
       // Once the page is fetched, the destination URL could have changed
       // (e.g., by clicking another link in the meantime). If so, bail
       // out, and let the newer execution to update the HTML.
-      if (navigatingTo !== href) {
-        return;
-      }
+      if (navigatingTo !== href) return;
       if (page && !page.initialData?.config?.['core/router']?.clientNavigationDisabled) {
-        yield renderRegions(page);
+        renderRegions(page);
         window.history[options.replace ? 'replaceState' : 'pushState']({}, '', href);
 
         // Update the URL in the state.
@@ -283,14 +243,6 @@ const {
           // package: https://github.com/WordPress/gutenberg/blob/c395242b8e6ee20f8b06c199e4fc2920d7018af1/packages/a11y/src/filter-message.js#L20-L26
           navigation.message = navigation.texts.loaded + (navigation.message === navigation.texts.loaded ? '\u00A0' : '');
         }
-
-        // Scroll to the anchor if exits in the link.
-        const {
-          hash
-        } = new URL(href, window.location);
-        if (hash) {
-          document.querySelector(hash)?.scrollIntoView();
-        }
       } else {
         yield forcePageReload(href);
       }
@@ -304,15 +256,14 @@ const {
      * @param {string}  url             The page URL.
      * @param {Object}  [options]       Options object.
      * @param {boolean} [options.force] Force fetching the URL again.
-     * @param {string}  [options.html]  HTML string to be used instead of fetching the requested URL.
+     * @param {string}  [options.html]  HTML string to be used instead of
+     *                                  fetching the requested URL.
      */
     prefetch(url, options = {}) {
       const {
         clientNavigationDisabled
       } = (0,interactivity_namespaceObject.getConfig)();
-      if (clientNavigationDisabled) {
-        return;
-      }
+      if (clientNavigationDisabled) return;
       const pagePath = getPagePath(url);
       if (options.force || !pages.has(pagePath)) {
         pages.set(pagePath, fetchPage(pagePath, options));
@@ -320,9 +271,6 @@ const {
     }
   }
 });
-
-// Add click and prefetch to all links.
-if (false) {}
 
 var __webpack_exports__actions = __webpack_exports__.o;
 var __webpack_exports__state = __webpack_exports__.w;

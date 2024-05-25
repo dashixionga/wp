@@ -192,7 +192,7 @@ function wp_ajax_wp_compression_test() {
 		if ( is_multisite() ) {
 			update_site_option( 'can_compress_scripts', 0 );
 		} else {
-			update_option( 'can_compress_scripts', 0, 'on' );
+			update_option( 'can_compress_scripts', 0, 'yes' );
 		}
 		wp_die( 0 );
 	}
@@ -231,7 +231,7 @@ function wp_ajax_wp_compression_test() {
 			if ( is_multisite() ) {
 				update_site_option( 'can_compress_scripts', 0 );
 			} else {
-				update_option( 'can_compress_scripts', 0, 'on' );
+				update_option( 'can_compress_scripts', 0, 'yes' );
 			}
 		} elseif ( 'yes' === $_GET['test'] ) {
 			check_ajax_referer( 'update_can_compress_scripts' );
@@ -239,7 +239,7 @@ function wp_ajax_wp_compression_test() {
 			if ( is_multisite() ) {
 				update_site_option( 'can_compress_scripts', 1 );
 			} else {
-				update_option( 'can_compress_scripts', 1, 'on' );
+				update_option( 'can_compress_scripts', 1, 'yes' );
 			}
 		}
 	}
@@ -274,7 +274,7 @@ function wp_ajax_imgedit_preview() {
  *
  * @since 3.1.0
  *
- * @global WP_Embed $wp_embed WordPress Embed object.
+ * @global WP_Embed $wp_embed
  */
 function wp_ajax_oembed_cache() {
 	$GLOBALS['wp_embed']->cache_oembed( $_GET['post'] );
@@ -3381,7 +3381,7 @@ function wp_ajax_send_attachment_to_editor() {
  * @since 3.5.0
  *
  * @global WP_Post  $post     Global post object.
- * @global WP_Embed $wp_embed WordPress Embed object.
+ * @global WP_Embed $wp_embed
  */
 function wp_ajax_send_link_to_editor() {
 	global $post, $wp_embed;
@@ -3733,8 +3733,8 @@ function wp_ajax_query_themes() {
  *
  * @since 4.0.0
  *
- * @global WP_Post    $post          Global post object.
- * @global WP_Embed   $wp_embed      WordPress Embed object.
+ * @global WP_Post    $post       Global post object.
+ * @global WP_Embed   $wp_embed   Embed API instance.
  * @global WP_Scripts $wp_scripts
  * @global int        $content_width
  */

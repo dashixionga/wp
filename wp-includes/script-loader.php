@@ -89,8 +89,8 @@ function wp_default_packages_vendor( $scripts ) {
 	$suffix = wp_scripts_get_suffix();
 
 	$vendor_scripts = array(
-		'react',
-		'react-dom' => array( 'react' ),
+		'react'       => array( 'wp-polyfill' ),
+		'react-dom'   => array( 'react' ),
 		'regenerator-runtime',
 		'moment',
 		'lodash',
@@ -103,12 +103,12 @@ function wp_default_packages_vendor( $scripts ) {
 		'wp-polyfill-element-closest',
 		'wp-polyfill-object-fit',
 		'wp-polyfill-inert',
-		'wp-polyfill',
+		'wp-polyfill' => array( 'wp-polyfill-inert', 'regenerator-runtime' ),
 	);
 
 	$vendor_scripts_versions = array(
-		'react'                       => '18.3.1',
-		'react-dom'                   => '18.3.1',
+		'react'                       => '18.2.0',
+		'react-dom'                   => '18.2.0',
 		'regenerator-runtime'         => '0.14.0',
 		'moment'                      => '2.29.4',
 		'lodash'                      => '4.17.21',
